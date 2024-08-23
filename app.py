@@ -4,7 +4,7 @@ import pandas as pd
 import plotly.express as px
 
 #Cargar datasets
-atletas = pd.read_csv("datasets/athlete_events.csv", index_col=0)
+atletas = pd.read_csv("registro_olimpico.csv")
 
 #Inicializar app
 app = Dash()
@@ -14,9 +14,8 @@ app.layout = [
     html.Div(children='Prueba con Data'),
     html.Hr(),
     dash_table.DataTable(data=atletas.to_dict('records'), page_size=10),
-    dcc.Graph(figure=px.bar(atletas, x='Height', y='Weight'))
 ]
 
 #Ejecutar app
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run_server(debug=True)
